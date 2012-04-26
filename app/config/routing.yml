@@ -1,0 +1,8 @@
+AdminBundle:
+    resource: "@AdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
+WebsiteBundle:
+    resource: "@WebsiteBundle/Resources/config/routing.yml"
+    prefix:   /
+

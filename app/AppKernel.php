@@ -20,6 +20,8 @@ class AppKernel extends Kernel
             new Symfony\Bundle\DoctrineMigrationsBundle\DoctrineMigrationsBundle(),
             // new FOS\FacebookBundle\FOSFacebookBundle(),
             // new FOS\TwitterBundle\FOSTwitterBundle(),
+            new PHPReview\WebsiteBundle\WebsiteBundle(),
+            new PHPReview\AdminBundle\AdminBundle(),
         );
 
 

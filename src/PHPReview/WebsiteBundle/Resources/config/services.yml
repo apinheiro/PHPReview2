@@ -1,0 +1,7 @@
+parameters:
+#    website.example.class: PHPReview\WebsiteBundle\Example
+
+services:
+#    website.example:
+#        class: %website.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
