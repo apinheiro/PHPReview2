@@ -1,7 +1,8 @@
 security:
     role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+        ROLE_SUPER_USER:  ROLE_USER
+        ROLE_ADMIN:       [ROLE_USER, ROLE_SUPER_USER]
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_SUPER_USER, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
         chain_providers:
@@ -31,16 +32,22 @@ security:
             security: false
 
         login:
-            pattern:  ^/demo/secured/login$
-            security: false
-
-        secured_area:
-            pattern:    ^/
+            pattern:  /
             form_login:
                 check_path: /login_check
                 login_path: /login
             logout:
                 path:   /logout
+                target: /
+            security: true
+
+        secured_area:
+            pattern:    /
+            form_login:
+                check_path: /admin/login_check   
+                login_path: /admin/login
+            logout:
+                path:   /admin/logout
                 target: /
             anonymous: ~
             #http_basic:
