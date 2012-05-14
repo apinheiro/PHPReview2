@@ -135,6 +135,12 @@ class Usuario
     private $estado;
     
     /**
+     * @ORM\ManyToOne(targetEntity="ComoConheceu")
+     * @ORM\JoinColumn(name="id_como_conheceu",referencedColumnName="id_como_conheceu")
+     */
+    private $como_conheceu;
+    
+    /**
      * Get id
      *
      * @return integer 
@@ -466,5 +472,25 @@ class Usuario
     public function getEstado()
     {
         return $this->estado;
+    }
+
+    /**
+     * Set como_conheceu
+     *
+     * @param PHPReview\WebsiteBundle\Entity\ComoConheceu $comoConheceu
+     */
+    public function setComoConheceu(\PHPReview\WebsiteBundle\Entity\ComoConheceu $comoConheceu)
+    {
+        $this->como_conheceu = $comoConheceu;
+    }
+
+    /**
+     * Get como_conheceu
+     *
+     * @return PHPReview\WebsiteBundle\Entity\ComoConheceu 
+     */
+    public function getComoConheceu()
+    {
+        return $this->como_conheceu;
     }
 }
