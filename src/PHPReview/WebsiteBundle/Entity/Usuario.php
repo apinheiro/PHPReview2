@@ -3,6 +3,7 @@
 namespace PHPReview\WebsiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use PHPReview\AdminBundle\Entity;
 
 /**
  * PHPReview\WebsiteBundle\Entity\Usuario
@@ -108,7 +109,6 @@ class Usuario
 
     /**
      * @ORM\OneToMany(targetEntity="Noticias",mappedBy="usuario")
-     * 
      */
     private $noticias;
     
@@ -125,6 +125,14 @@ class Usuario
      * @ORM\JoinColumn(name="id_escolaridade",referencedColumnName="id_escolaridade")
      */
     private $escolaridade;
+    
+    /**
+     *
+     * @var PHPReview\AdminBundle\Estado
+     * @ORM\ManyToOne(targetEntity="PHPReview\AdminBundle\Estado",inversedBy="usuarios")
+     * @ORM\JoinColumn(name="id_estado",referencedColumnName="id_estado")
+     */
+    private $estado;
     
     /**
      * Get id
@@ -438,5 +446,25 @@ class Usuario
     public function getEscolaridade()
     {
         return $this->escolaridade;
+    }
+
+    /**
+     * Set estado
+     *
+     * @param PHPReview\AdminBundle\Estado $estado
+     */
+    public function setEstado(\PHPReview\AdminBundle\Estado $estado)
+    {
+        $this->estado = $estado;
+    }
+
+    /**
+     * Get estado
+     *
+     * @return PHPReview\AdminBundle\Estado 
+     */
+    public function getEstado()
+    {
+        return $this->estado;
     }
 }
