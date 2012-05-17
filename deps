@@ -77,3 +77,7 @@
 [FacebookSDK]
     git=git://github.com/facebook/php-sdk.git
     target=/facebook
+
+[GregwarCaptchaBundle]
+        git=git://github.com/Gregwar/CaptchaBundle.git
+        target=/bundles/Gregwar/CaptchaBundle

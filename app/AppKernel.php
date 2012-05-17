@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             // new FOS\TwitterBundle\FOSTwitterBundle(),
             new PHPReview\WebsiteBundle\WebsiteBundle(),
             new PHPReview\AdminBundle\AdminBundle(),
+            new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
         );
 
 
