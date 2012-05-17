@@ -4,6 +4,7 @@ namespace PHPReview\AdminBundle\Entity;
 
 use PHPReview\WebsiteBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * PHPReview\AdminBundle\Entity\Estados
@@ -28,6 +29,13 @@ class Estados
      * @ORM\Column(name="ds_estado", type="string", length=100)
      */
     private $ds_estado;
+    
+    /**
+     *  @var string $nacao
+     * 
+     * @ORM\Column(name="nacao",type="string",length="3")
+     */
+    private $nacao;
 
     /**
      * @var boolean $in_disponivel
@@ -39,7 +47,7 @@ class Estados
     /**
      *
      * @var PHPReview\WebsiteBundle\Usuario $usuario
-     * @ORM\OneToMany(targetEntity="PHPReview\WebsiteBundle\Usuario",mappedBy="estado")
+     * @ORM\OneToMany(targetEntity="PHPReview\WebsiteBundle\Entity\Usuario",mappedBy="estado")
      */
     private $usuarios;
 
@@ -101,9 +109,9 @@ class Estados
     /**
      * Add usuarios
      *
-     * @param PHPReview\WebsiteBundle\Usuario $usuarios
+     * @param PHPReview\WebsiteBundle\Entity\Usuario $usuarios
      */
-    public function addUsuario(\PHPReview\WebsiteBundle\Usuario $usuarios)
+    public function addUsuario(\PHPReview\WebsiteBundle\Entity\Usuario $usuarios)
     {
         $this->usuarios[] = $usuarios;
     }
@@ -116,5 +124,24 @@ class Estados
     public function getUsuarios()
     {
         return $this->usuarios;
+    }
+    
+    public function addNacao($nacao){
+        if (strle($nacao) == 3) {
+            $this->nacao = $nacao;
+        }
+    }
+    
+    
+    public function getNacao(){
+        return $this->nacao;
+    }
+    
+    /**
+     * @return boolean 
+     * @Assert\True(message="O código de nação informado não é válido")
+     */
+    public function isNacaoValida(){
+        return strlen($this->nacao) == 3;
     }
 }
