@@ -69,6 +69,12 @@ class Publicacao
      * @ORM\Column(name="dt_publicacao", type="datetime")
      */
     private $dt_publicacao;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="PHPReview\AdminBundle\Entity\TipoPublicacao",inversedBy="publicacoes")
+     * @ORM\JoinColumn(name="id_tipo_publicacao",referencedColumnName="id")
+    */
+    private $tipoPublicacao;
 
 
     /**
@@ -219,5 +225,25 @@ class Publicacao
     public function getDtPublicacao()
     {
         return $this->dt_publicacao;
+    }
+
+    /**
+     * Set tipoPublicacao
+     *
+     * @param PHPReview\AdminBundle\Entity\TipoPublicacao $tipoPublicacao
+     */
+    public function setTipoPublicacao(\PHPReview\AdminBundle\Entity\TipoPublicacao $tipoPublicacao)
+    {
+        $this->tipoPublicacao = $tipoPublicacao;
+    }
+
+    /**
+     * Get tipoPublicacao
+     *
+     * @return PHPReview\AdminBundle\Entity\TipoPublicacao 
+     */
+    public function getTipoPublicacao()
+    {
+        return $this->tipoPublicacao;
     }
 }
