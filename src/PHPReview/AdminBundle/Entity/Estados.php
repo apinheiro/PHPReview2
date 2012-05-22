@@ -144,4 +144,14 @@ class Estados
     public function isNacaoValida(){
         return strlen($this->nacao) == 3;
     }
+
+    /**
+     * Set nacao
+     *
+     * @param string $nacao
+     */
+    public function setNacao($nacao)
+    {
+        $this->nacao = $nacao;
+    }
 }
