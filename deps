@@ -68,6 +68,7 @@
 [DoctrineMigrationsBundle]
     git=http://github.com/symfony/DoctrineMigrationsBundle.git
     target=/bundles/Symfony/Bundle/DoctrineMigrationsBundle
+    version=origin/2.0
 
 [FOSFacebookBundle]
     git=git://github.com/FriendsOfSymfony/FOSFacebookBundle.git
