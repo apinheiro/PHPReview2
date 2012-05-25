@@ -63,7 +63,7 @@ class TipoPublicacao
     
     /**
      *
-     * @ORM\OneToMany(targetEntity="PHPReview\WebsiteBundle\Entity\Publicacoes",mappedBy="tipoPublicacao")
+     * @ORM\OneToMany(targetEntity="PHPReview\WebsiteBundle\Entity\Publicacao",mappedBy="tipoPublicacao")
      */
     private $publicacoes;
 
@@ -186,9 +186,9 @@ class TipoPublicacao
     /**
      * Add publicacoes
      *
-     * @param PHPReview\WebsiteBundle\Entity\Publicacoes $publicacoes
+     * @param PHPReview\WebsiteBundle\Entity\Publicacao $publicacoes
      */
-    public function addPublicacoes(\PHPReview\WebsiteBundle\Entity\Publicacoes $publicacoes)
+    public function addPublicacoes(\PHPReview\WebsiteBundle\Entity\Publicacao $publicacoes)
     {
         $this->publicacoes[] = $publicacoes;
     }

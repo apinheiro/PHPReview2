@@ -108,7 +108,7 @@ class Usuario
 
 
     /**
-     * @ORM\OneToMany(targetEntity="Noticias",mappedBy="usuario")
+     * @ORM\OneToMany(targetEntity="Noticia",mappedBy="usuario")
      */
     private $noticias;
     
@@ -128,8 +128,8 @@ class Usuario
     
     /**
      *
-     * @var PHPReview\AdminBundle\Estado
-     * @ORM\ManyToOne(targetEntity="PHPReview\AdminBundle\Estado",inversedBy="usuarios")
+     * @var PHPReview\AdminBundle\Entity\Estados
+     * @ORM\ManyToOne(targetEntity="PHPReview\AdminBundle\Entity\Estados",inversedBy="usuarios")
      * @ORM\JoinColumn(name="id_estado",referencedColumnName="id_estado")
      */
     private $estado;
@@ -397,9 +397,9 @@ class Usuario
     /**
      * Add noticias
      *
-     * @param PHPReview\WebsiteBundle\Entity\Noticias $noticias
+     * @param PHPReview\WebsiteBundle\Entity\Noticia $noticias
      */
-    public function addNoticias(\PHPReview\WebsiteBundle\Entity\Noticias $noticias)
+    public function addNoticias(\PHPReview\WebsiteBundle\Entity\Noticia $noticias)
     {
         $this->noticias[] = $noticias;
     }
@@ -457,9 +457,9 @@ class Usuario
     /**
      * Set estado
      *
-     * @param PHPReview\AdminBundle\Estado $estado
+     * @param PHPReview\AdminBundle\Entity\Estados $estado
      */
-    public function setEstado(\PHPReview\AdminBundle\Estado $estado)
+    public function setEstado(\PHPReview\AdminBundle\Entity\Estados $estado)
     {
         $this->estado = $estado;
     }

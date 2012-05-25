@@ -15,7 +15,7 @@ class Publicacao
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id_publicacao", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -43,9 +43,9 @@ class Publicacao
     private $nr_edicao;
 
     /**
-     * @var strign $ano_publicacao
+     * @var string $ano_publicacao
      *
-     * @ORM\Column(name="ano_publicacao", type="strign", length=4)
+     * @ORM\Column(name="ano_publicacao", type="string", length=4)
      */
     private $ano_publicacao;
 
@@ -150,9 +150,9 @@ class Publicacao
     /**
      * Set ano_publicacao
      *
-     * @param strign $anoPublicacao
+     * @param string $anoPublicacao
      */
-    public function setAnoPublicacao(\strign $anoPublicacao)
+    public function setAnoPublicacao($anoPublicacao)
     {
         $this->ano_publicacao = $anoPublicacao;
     }
@@ -160,7 +160,7 @@ class Publicacao
     /**
      * Get ano_publicacao
      *
-     * @return strign 
+     * @return string 
      */
     public function getAnoPublicacao()
     {
