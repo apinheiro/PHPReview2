@@ -4,6 +4,8 @@ namespace PHPReview\WebsiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use PHPReview\AdminBundle\Entity;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * PHPReview\WebsiteBundle\Entity\Usuario
@@ -11,7 +13,7 @@ use PHPReview\AdminBundle\Entity;
  * @ORM\Table()
  * @ORM\Entity
  */
-class Usuario
+class Usuario implements UserInterface, \Serializable
 {
     /**
      * @var integer $id
@@ -49,7 +51,21 @@ class Usuario
      * @ORM\Column(name="ds_endereco", type="string")
      */
     private $ds_endereco;
+    
+    /**
+     * @var string $ds_endereco
+     *
+     * @ORM\Column(name="ds_senha", type="string")
+     */
+    private $ds_senha;
 
+    /**
+     * @var string $ds_salt
+     * 
+     * @ORM\Column(name="ds_salt",type="string", length="30")
+     */
+    private $ds_salt;
+    
     /**
      * @var string $ds_complemento
      *
@@ -113,6 +129,13 @@ class Usuario
     private $noticias;
     
     /**
+     * @var string $role
+     * 
+     * @ORM\Column(name="ds_role",type="string",length=40) 
+     */
+    private $role;
+    
+    /**
      *
      * @ORM\ManyToOne(targetEntity="Cargos",inversedBy="usuarios")
      * @ORM\JoinColumn(name="id_cargo",referencedColumnName="id_cargo")
@@ -139,6 +162,8 @@ class Usuario
      * @ORM\JoinColumn(name="id_como_conheceu",referencedColumnName="id_como_conheceu")
      */
     private $como_conheceu;
+    
+    private $ds_confirma_senha;
     
     /**
      * Get id
@@ -492,5 +517,39 @@ class Usuario
     public function getComoConheceu()
     {
         return $this->como_conheceu;
+    }
+    
+    public function setRole($regra){
+        $this->role = $regra;
+    }
+    public function getRoles(){
+        return array($this->role);
+    }
+    
+    public function getSalt($novo = false){
+        if ($novo){
+            $this->salt = base64_encode(date('YmdHis'));
+        }
+        return $this->salt;
+    }
+    
+    public function setSalt($salt){
+        $this->salt = $salt;
+    }
+    
+    public function getUsername(){
+        return $this->email;
+    }
+    
+    public function eraseCredentials(){
+        
+    }
+    
+    public function equals(UserInterface $user){
+        return $user->getId() == $this->getId();
+    }
+    
+    public function setPassword($senha){
+        $this->ds_senha = $senha;
     }
 }

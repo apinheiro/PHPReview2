@@ -60,4 +60,10 @@ jms_security_extra:
     secure_controllers:  true
     secure_all_services: false
 
-gregwar_captcha: ~
+gregwar_captcha: 
+  height: 100
+  width: 300
+  length: 6
+  quality: 80
+  
+  
