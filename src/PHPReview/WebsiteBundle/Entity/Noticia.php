@@ -16,7 +16,7 @@ class Noticia
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id_noticia", type="integer")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -87,15 +87,15 @@ class Noticia
 
     /**
      * @ORM\ManyToOne(targetEntity="Usuario",inversedBy="noticias")
-     * @ORM\JoinColumn(name="id_usuario",referencedColumnName="id_usuario")
+     * @ORM\JoinColumn(name="id_usuario",referencedColumnName="id")
      */
     private $usuario;
     
     
     /**
      * @ORM\ManyToMany(targetEntity="\PHPReview\AdminBundle\Entity\Tags",inversedBy="noticias",cascade={"persist"})
-     * @ORM\JoinTable(name="TagNoticia",joinColumns={@ORM\JoinColumn(name="id_noticia",referencedColumnName="id_noticia")},
-     * inverseJoinColumns={@ORM\JoinColumn(name="id_tag",referencedColumnName="id_tag")})
+     * @ORM\JoinTable(name="TagNoticia",joinColumns={@ORM\JoinColumn(name="id_noticia",referencedColumnName="id")},
+     * inverseJoinColumns={@ORM\JoinColumn(name="id_tag",referencedColumnName="id")})
      */
     private $tags;
 

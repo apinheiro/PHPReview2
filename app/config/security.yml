@@ -1,3 +1,9 @@
+# Estrutura das permissões de acesso
+# ROLE_USER = Usuário visitante do site
+# ROLE_SUPER_USER = Usuário do site, porém autenticado
+# ROLE_ADMIN = Usuário que pode administrar o site
+# ROLE_SUPER_ADMIN = Super administrador do site. Pode fazer de tudo.
+
 security:
     role_hierarchy:
         ROLE_SUPER_USER:  ROLE_USER
@@ -29,21 +35,15 @@ security:
 
         login:
             pattern:  /
+            security: false
+
+        secured_area:
+            pattern:    ^/
             form_login:
                 check_path: /login_check
                 login_path: /login
             logout:
                 path:   /logout
-                target: /
-            security: true
-
-        secured_area:
-            pattern:    /
-            form_login:
-                check_path: /admin/login_check   
-                login_path: /admin/login
-            logout:
-                path:   /admin/logout
                 target: /
             anonymous: ~
             #http_basic:

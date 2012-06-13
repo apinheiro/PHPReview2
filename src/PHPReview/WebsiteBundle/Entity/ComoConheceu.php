@@ -15,7 +15,7 @@ class ComoConheceu
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id_como_conheceu", type="integer")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */

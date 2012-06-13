@@ -25,7 +25,7 @@ class HistoricoDownload
      * @var integer $id_publicacao
      *
      * @ORM\ManyToOne(targetEntity="PHPReview\WebsiteBundle\Entity\Publicacao")
-     * @ORM\JoinColumn(name="id_publicacao",referencedColumnName="id_publicacao")
+     * @ORM\JoinColumn(name="id_publicacao",referencedColumnName="id")
      */
     private $publicacao;
 
@@ -47,7 +47,7 @@ class HistoricoDownload
      * @var integer $id_usuario
      *
      * @ORM\ManyToOne(targetEntity="PHPReview\WebsiteBundle\Entity\Usuario")
-     * @ORM\JoinColumn(name="id_usuario",referencedColumnName="id_usuario")
+     * @ORM\JoinColumn(name="id_usuario",referencedColumnName="id")
      */
     private $usuario;
 

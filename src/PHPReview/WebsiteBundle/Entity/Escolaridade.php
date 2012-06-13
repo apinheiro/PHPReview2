@@ -15,7 +15,7 @@ class Escolaridade
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id_escolaridade", type="integer")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */

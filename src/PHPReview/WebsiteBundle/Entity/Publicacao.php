@@ -15,7 +15,7 @@ class Publicacao
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id_publicacao", type="integer")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
