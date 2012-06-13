@@ -1,0 +1,50 @@
+<h1>Cadastro de Novo Usuário</h1>
+<form method="post" action="{{ path('homepage_cadastro') }}" name="form_usuario" >
+
+{{ form_errors(form) }}
+
+{{ form_widget(form.id) }}
+<div>
+     
+</div>
+<div>
+    Nome: <br>{{ form_widget(form.ds_nome) }}{{ form_errors(form.ds_nome) }}
+</div>
+<div>
+    Sexo: <br>{{ form_widget(form.sexo) }}{{ form_errors(form.sexo) }}
+</div>
+<div>
+    E-mail: <br>{{ form_widget(form.ds_email) }}{{ form_errors(form.ds_email) }}
+</div>
+<div>
+    Senha: <br>{{ form_widget(form.ds_senha) }}{{ form_errors(form.ds_senha) }}
+</div>
+<div>
+    Confirmar Senha: <br>{{ form_widget(form.ds_confirma_senha) }}{{ form_errors(form.ds_confirma_senha) }}
+</div>
+
+<h2> Dados Complementares:</h2>
+
+<div>
+   Estado : <br>{{ form_widget(form.estado) }}{{ form_errors(form.estado) }}
+</div>
+<div>
+    Cargo: <br>{{ form_widget(form.cargo) }}{{ form_errors(form.cargo) }}
+</div>
+<div>
+    Como Conheceu a revista? <br>{{ form_widget(form.como_conheceu) }}{{ form_errors(form.como_conheceu) }}
+</div>
+<div>
+    <input type="checkbox" name="ck_aceito_termos" value="s">Concordo em receber anúncios de 
+    parceiros da revista PHP Review. Também concordo com a política de privacidade 
+    da revista.
+</div>
+<div>
+{{ form_widget(form.captcha) }}
+</div>
+
+{{ form_rest(form) }}
+
+<input type="submit" value="Enviar" />
+</form>
+

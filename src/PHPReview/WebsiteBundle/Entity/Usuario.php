@@ -18,7 +18,7 @@ class Usuario implements UserInterface, \Serializable
     /**
      * @var integer $id
      *
-     * @ORM\Column(name="id_usuario", type="integer")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -28,6 +28,7 @@ class Usuario implements UserInterface, \Serializable
      * @var string $nm_usuario
      *
      * @ORM\Column(name="nm_usuario", type="string", length=200)
+     * @Assert\NotBlank(message="O nome do usuário não pode ficar em branco")
      */
     private $nm_usuario;
 
@@ -35,6 +36,8 @@ class Usuario implements UserInterface, \Serializable
      * @var string $ds_email
      *
      * @ORM\Column(name="ds_email", type="string", length=150)
+     * @Assert\NotBlank(message="O nome do usuário não pode ficar em branco")
+     * @Assert\Email(message="O e-mail informado não é um e-mail válido",checkMX=true)
      */
     private $ds_email;
 
@@ -42,20 +45,16 @@ class Usuario implements UserInterface, \Serializable
      * @var string $sexo
      *
      * @ORM\Column(name="sexo", type="string", length=1)
+     * @Assert\NotBlank(message="O Sexo deve ser informado")
+     * @Assert\Choice(choices={"M","F"},message="Informe o valor M ou F")
      */
     private $sexo;
 
     /**
      * @var string $ds_endereco
      *
-     * @ORM\Column(name="ds_endereco", type="string")
-     */
-    private $ds_endereco;
-    
-    /**
-     * @var string $ds_endereco
-     *
      * @ORM\Column(name="ds_senha", type="string")
+     * @Assert\NotBlank(message="Informe uma senha")
      */
     private $ds_senha;
 
@@ -67,51 +66,10 @@ class Usuario implements UserInterface, \Serializable
     private $ds_salt;
     
     /**
-     * @var string $ds_complemento
-     *
-     * @ORM\Column(name="ds_complemento", type="string")
-     */
-    private $ds_complemento;
-
-    /**
-     * @var string $ds_numero
-     *
-     * @ORM\Column(name="ds_numero", type="string", length=50)
-     */
-    private $ds_numero;
-
-    /**
-     * @var integer $nr_cep
-     *
-     * @ORM\Column(name="nr_cep", type="integer")
-     */
-    private $nr_cep;
-
-    /**
-     * @var string $ds_bairro
-     *
-     * @ORM\Column(name="ds_bairro", type="string", length=80)
-     */
-    private $ds_bairro;
-
-    /**
-     * @var string $ds_cidade
-     *
-     * @ORM\Column(name="ds_cidade", type="string", length=50)
-     */
-    private $ds_cidade;
-
-    /**
-     * @var string $ds_como_conheceu
-     *
-     * @ORM\Column(name="ds_como_conheceu", type="string")
-     */
-    private $ds_como_conheceu;
-
-    /**
      * @var datetime $dt_criacao
      *
      * @ORM\Column(name="dt_criacao", type="datetime")
+     * @Assert\DateTime(message="Informe uma data válida")
      */
     private $dt_criacao;
 
@@ -119,6 +77,7 @@ class Usuario implements UserInterface, \Serializable
      * @var datetime $dt_atualizacao
      *
      * @ORM\Column(name="dt_atualizacao", type="datetime")
+     * @Assert\DateTime(message="Informe uma data válida")
      */
     private $dt_atualizacao;
 
@@ -138,32 +97,36 @@ class Usuario implements UserInterface, \Serializable
     /**
      *
      * @ORM\ManyToOne(targetEntity="Cargos",inversedBy="usuarios")
-     * @ORM\JoinColumn(name="id_cargo",referencedColumnName="id_cargo")
+     * @ORM\JoinColumn(name="id_cargo",referencedColumnName="id")
      */
     private $cargo;
     
     /**
      *
      * @ORM\ManyToOne(targetEntity="Escolaridade",inversedBy="usuarios")
-     * @ORM\JoinColumn(name="id_escolaridade",referencedColumnName="id_escolaridade")
+     * @ORM\JoinColumn(name="id_escolaridade",referencedColumnName="id")
      */
     private $escolaridade;
     
     /**
      *
-     * @var PHPReview\AdminBundle\Entity\Estados
+     * @var PHPReview\AdminBundle\Entity\Estados estados
      * @ORM\ManyToOne(targetEntity="PHPReview\AdminBundle\Entity\Estados",inversedBy="usuarios")
-     * @ORM\JoinColumn(name="id_estado",referencedColumnName="id_estado")
+     * @ORM\JoinColumn(name="id_estado",referencedColumnName="id")
      */
     private $estado;
     
     /**
      * @ORM\ManyToOne(targetEntity="ComoConheceu")
-     * @ORM\JoinColumn(name="id_como_conheceu",referencedColumnName="id_como_conheceu")
+     * @ORM\JoinColumn(name="id_como_conheceu",referencedColumnName="id")
      */
     private $como_conheceu;
     
-    private $ds_confirma_senha;
+    /**
+     *
+     * @var string $ds_confirma_senha;
+     */
+    public $ds_confirma_senha;
     
     /**
      * Get id
@@ -233,146 +196,6 @@ class Usuario implements UserInterface, \Serializable
     public function getSexo()
     {
         return $this->sexo;
-    }
-
-    /**
-     * Set ds_endereco
-     *
-     * @param string $dsEndereco
-     */
-    public function setDsEndereco($dsEndereco)
-    {
-        $this->ds_endereco = $dsEndereco;
-    }
-
-    /**
-     * Get ds_endereco
-     *
-     * @return string 
-     */
-    public function getDsEndereco()
-    {
-        return $this->ds_endereco;
-    }
-
-    /**
-     * Set ds_complemento
-     *
-     * @param string $dsComplemento
-     */
-    public function setDsComplemento($dsComplemento)
-    {
-        $this->ds_complemento = $dsComplemento;
-    }
-
-    /**
-     * Get ds_complemento
-     *
-     * @return string 
-     */
-    public function getDsComplemento()
-    {
-        return $this->ds_complemento;
-    }
-
-    /**
-     * Set ds_numero
-     *
-     * @param string $dsNumero
-     */
-    public function setDsNumero($dsNumero)
-    {
-        $this->ds_numero = $dsNumero;
-    }
-
-    /**
-     * Get ds_numero
-     *
-     * @return string 
-     */
-    public function getDsNumero()
-    {
-        return $this->ds_numero;
-    }
-
-    /**
-     * Set nr_cep
-     *
-     * @param integer $nrCep
-     */
-    public function setNrCep($nrCep)
-    {
-        $this->nr_cep = $nrCep;
-    }
-
-    /**
-     * Get nr_cep
-     *
-     * @return integer 
-     */
-    public function getNrCep()
-    {
-        return $this->nr_cep;
-    }
-
-    /**
-     * Set ds_bairro
-     *
-     * @param string $dsBairro
-     */
-    public function setDsBairro($dsBairro)
-    {
-        $this->ds_bairro = $dsBairro;
-    }
-
-    /**
-     * Get ds_bairro
-     *
-     * @return string 
-     */
-    public function getDsBairro()
-    {
-        return $this->ds_bairro;
-    }
-
-    /**
-     * Set ds_cidade
-     *
-     * @param string $dsCidade
-     */
-    public function setDsCidade($dsCidade)
-    {
-        $this->ds_cidade = $dsCidade;
-    }
-
-    /**
-     * Get ds_cidade
-     *
-     * @return string 
-     */
-    public function getDsCidade()
-    {
-        return $this->ds_cidade;
-    }
-
-    /**
-     * Set ds_como_conheceu
-     *
-     * @param string $dsComoConheceu
-     */
-    public function setDsComoConheceu($dsComoConheceu)
-    {
-        $this->ds_como_conheceu = $dsComoConheceu;
-    }
-
-    /**
-     * Get ds_como_conheceu
-     *
-     * @return string 
-     */
-    public function getDsComoConheceu()
-    {
-        return $this->ds_como_conheceu;
     }
 
     /**
@@ -519,37 +342,139 @@ class Usuario implements UserInterface, \Serializable
         return $this->como_conheceu;
     }
     
+    /**
+     * Define a regra básica para o usuário.
+     * @param string $regra 
+     */
     public function setRole($regra){
         $this->role = $regra;
     }
+    
+    /**
+     * Retorna as regras que o usuário pertence.
+     * 
+     * @return array $regras
+     */
     public function getRoles(){
         return array($this->role);
     }
     
+    /**
+     * Retorna o validador da senha do usuário.
+     * Caso o usuário não possua validador e seja usuário novo, 
+     * então um novo salt será criado.
+     * 
+    */
     public function getSalt($novo = false){
         if ($novo){
-            $this->salt = base64_encode(date('YmdHis'));
+            $this->setSalt(date('YmdHis')); 
         }
-        return $this->salt;
+        return $this->ds_salt;
     }
     
+    /**
+     * Define a string de validação do usuário.
+     * 
+     * @param string $salt
+     */
     public function setSalt($salt){
-        $this->salt = $salt;
+        $this->ds_salt = base64_encode($salt);
     }
     
+    /**
+     * Retorna o login do usuário.
+     * 
+     * @return string
+     */
     public function getUsername(){
         return $this->email;
     }
     
+    /**
+     * Remove credenciais antigas.
+     */
     public function eraseCredentials(){
-        
+        $this->role = "";
     }
     
+    /**
+     * Valida se um usuário é igual ao outro.
+     * 
+     * @param UserInterface $user
+     * @return string
+     */
     public function equals(UserInterface $user){
         return $user->getId() == $this->getId();
     }
     
+    /**
+     * Define uma senha para o usuário.
+     * @param type $senha 
+     */
     public function setPassword($senha){
         $this->ds_senha = $senha;
     }
+    
+    /**
+     * Recupera a senha do usuário
+     * @return string 
+     */
+    public function getPassword(){
+        $this->ds_senha;
+    }
+    
+    /**
+     * Override para definir a senha do usuário.
+     * @param string $senha 
+     */
+    public function setDsSenha($senha){
+        $this->ds_senha = $senha;
+    }
+    
+    /**
+     * Override para recuperar a senha do usuário.
+     */
+    public function getDsSenha(){
+        $this->ds_senha;
+    }
+    
+    /**
+     * Método para criptografar a senha do usuário. 
+     * Somente será chamada se a senha for válida.
+     * 
+     * @param type $factory 
+     */
+    public function criptografaSenha($factory){
+        $factory = $this->get('security.encoder_factory');
+        $encoder = $factory->getEncoder($usuario);
+        $usuario->setSenha($encoder->encodePassword($usuario->getSenha(), $usuario->getSalt()));
+    }
+    
+    /**
+     * Valida se a senha e a confirmação de senha são iguais.
+     * 
+     * @Assert\True(message="Informe a senha e a confirmação iguais")
+     */
+    public function isSenhaValida(){
+        return $this->ds_senha == $this->ds_confirma_senha;
+    }
+    
+    /**
+     *
+     * @return type 
+     */
+    public function serialize()
+    {
+       return serialize($this->getId());
+    }
+
+    /**
+     *
+     * @param type $data 
+     */
+    public function unserialize($data)
+    {
+       $this->id = unserialize($data);
+    }
+
 }

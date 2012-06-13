@@ -4,13 +4,14 @@ namespace PHPReview\WebsiteBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
+use Doctrine\ORM\EntityRepository;
 
 
 class UsuarioType extends AbstractType
 {
   public function buildForm(FormBuilder $builder, array $options){
-        $builder->add('id_usuario', 'hidden');
-        $builder->add('ds_nome','text',array('label'=>'Nome:'));
+        $builder->add('id', 'hidden');
+        $builder->add('nm_usuario','text',array('label'=>'Nome:'));
         $builder->add('sexo','choice',array('label'    => 'Sexo:',
                                              'choices' => array('M'=>'Masculino','F'=>'Feminino'),
                                              'required'=> true,
@@ -30,10 +31,9 @@ class UsuarioType extends AbstractType
                               where('e.in_disponivel = 1')->
                               orderBy('e.ds_estado','ASC'); 
                        },
-              'multiply'=>false,
+              'multiple'=>false,
               'expanded'=>false,
-              'required'=>true,
-              ''));
+              'required'=>true));
         $builder->add('cargo','entity',array(
               'label'=>'Cargo:',
               'empty_value'=>'- Selecione',
@@ -45,11 +45,10 @@ class UsuarioType extends AbstractType
                               where('c.in_disponivel = 1')->
                               orderBy('c.ds_cargo','ASC'); 
                        },
-              'multiply'=>false,
+              'multiple'=>false,
               'expanded'=>false,
-              'required'=>true,
-              ''));
-        $builder->add('cargo','entity',array(
+              'required'=>true));
+        $builder->add('como_conheceu','entity',array(
               'label'=>'Como conheceu a revista?',
               'empty_value'=>'- Selecione',
               'class'=>'WebsiteBundle:ComoConheceu',
@@ -60,12 +59,10 @@ class UsuarioType extends AbstractType
                               where('c.in_ativo = 1')->
                               orderBy('c.ds_como_conheceu','ASC'); 
                        },
-              'multiply'=>false,
+              'multiple'=>false,
               'expanded'=>false,
-              'required'=>true,
-              ''));
+              'required'=>true));
         $builder->add('captcha','captcha');
-        $builder->add();
    }
 
   public function getName(){
