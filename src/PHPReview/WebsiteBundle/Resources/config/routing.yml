@@ -1,4 +1,4 @@
-WebsiteBundle_homepage:
+homepage:
     pattern:  /
     defaults: { _controller: WebsiteBundle:Default:index }
     
@@ -8,3 +8,15 @@ WebsiteBundle_login:
 
 WebsiteBundle_login_check:
     pattern: /login_check
+    
+homepage_cadastro:
+    pattern: /cadastro.{_format}
+    defaults: { _controller: WebsiteBundle:Usuario:cadastro, _format: html}
+    requirements:
+        _format: html
+
+homepage_cadastro_sucesso:
+    pattern: /cadastro_sucesso.{_format}
+    defaults: {_controller:WebsiteBundle:Usuario:sucesso, _format:html}
+    requirements:
+        _format: html
