@@ -12,6 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @UniqueEntity(fields = "ds_email",message = "Este E-mail ja esta sendo utilizado.")
  */
 class Usuario implements UserInterface, \Serializable
 {
@@ -69,7 +70,6 @@ class Usuario implements UserInterface, \Serializable
      * @var datetime $dt_criacao
      *
      * @ORM\Column(name="dt_criacao", type="datetime")
-     * @Assert\DateTime(message="Informe uma data válida")
      */
     private $dt_criacao;
 
@@ -77,7 +77,6 @@ class Usuario implements UserInterface, \Serializable
      * @var datetime $dt_atualizacao
      *
      * @ORM\Column(name="dt_atualizacao", type="datetime")
-     * @Assert\DateTime(message="Informe uma data válida")
      */
     private $dt_atualizacao;
 
@@ -203,9 +202,13 @@ class Usuario implements UserInterface, \Serializable
      *
      * @param datetime $dtCriacao
      */
-    public function setDtCriacao($dtCriacao)
+    public function setDtCriacao(\Datetime $dtCriacao = null)
     {
-        $this->dt_criacao = $dtCriacao;
+        if (is_null($dtCriacao)){
+            $this->dt_criacao = \DateTime::createFromFormat(\Datetime::ATOM, date(\Datetime::ATOM));
+        }else{
+            $this->dt_criacao = $dtCriacao; 
+        }
     }
 
     /**
@@ -213,9 +216,13 @@ class Usuario implements UserInterface, \Serializable
      *
      * @return datetime 
      */
-    public function getDtCriacao()
+    public function getDtCriacao($formato = null)
     {
-        return $this->dt_criacao;
+        if (!$formato){
+           return $this->dt_criacao; 
+        }else{
+            return $this->dt_criacao->format($formato); 
+        }
     }
 
     /**
@@ -223,9 +230,13 @@ class Usuario implements UserInterface, \Serializable
      *
      * @param datetime $dtAtualizacao
      */
-    public function setDtAtualizacao($dtAtualizacao)
+    public function setDtAtualizacao(\Datetime $dtAtualizacao = null)
     {
-        $this->dt_atualizacao = $dtAtualizacao;
+      if (is_null($dtAtualizacao)){
+          $this->dt_atualizacao = \DateTime::createFromFormat(\Datetime::ATOM, date(\Datetime::ATOM));
+      }else{   
+       $this->dt_atualizacao = $dtAtualizacao;
+      }
     }
 
     /**
@@ -233,9 +244,13 @@ class Usuario implements UserInterface, \Serializable
      *
      * @return datetime 
      */
-    public function getDtAtualizacao()
+    public function getDtAtualizacao($formato = null)
     {
-        return $this->dt_atualizacao;
+        if ($formato){
+            return $this->dt_atualizacao->format($formato);
+        }else{
+            return $this->dt_atualizacao;
+        }
     }
     public function __construct()
     {
@@ -445,9 +460,8 @@ class Usuario implements UserInterface, \Serializable
      * @param type $factory 
      */
     public function criptografaSenha($factory){
-        $factory = $this->get('security.encoder_factory');
-        $encoder = $factory->getEncoder($usuario);
-        $usuario->setSenha($encoder->encodePassword($usuario->getSenha(), $usuario->getSalt()));
+        $encoder = $factory->getEncoder($this);
+        $this->setdsSenha($encoder->encodePassword($this->getDsSenha(), $this->getSalt(true)));
     }
     
     /**
