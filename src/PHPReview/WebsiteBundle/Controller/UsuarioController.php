@@ -27,13 +27,14 @@ class UsuarioController extends Controller
         $formulario = $this->createForm(new Form\UsuarioType(),$usuario);
         
         if ($request->getMethod() == "POST"){
-            $form->bindRequest($request);
+            $formulario->bindRequest($request);
             
-            if($form->isValid()){
+            if($formulario->isValid()){
               
               $usuario->criptografaSenha($this->get('security.encoder_factory'));
               $usuario->setRole('ROLE_USER');
-              $usuario->setDtCriacao(date('Y-m-d H:i:s'));
+              $usuario->setDtCriacao(\DateTime::createFromFormat(\Datetime::ATOM, date(\Datetime::ATOM)));
+              $usuario->setDtAtualizacao(\DateTime::createFromFormat(\Datetime::ATOM, date(\Datetime::ATOM)));
               
               $em = $this->getDoctrine()->getEntityManager();
               $em->persist($usuario);
@@ -42,9 +43,9 @@ class UsuarioController extends Controller
               $this->get('session')->setFlash('notice', 'Usuario criado com sucesso!');
               return $this->redirect($this->generateUrl('homepage_cadastro_sucesso'));   
             }
-        }else{
-            return array('form'=>$formulario->createView());
         }
+        
+        return array('form'=>$formulario->createView());
         
     }
     
@@ -52,6 +53,6 @@ class UsuarioController extends Controller
      * @Template()
      */
     public function sucessoAction(){
-        
+        return array();
     }
 }
