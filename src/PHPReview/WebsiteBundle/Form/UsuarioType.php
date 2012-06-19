@@ -17,9 +17,9 @@ class UsuarioType extends AbstractType
                                              'required'=> true,
                                              'multiple'=> false,
                                              'expanded'=> true));
-        $builder->add('ds_email','text',array('label'=>'Nome para apresentacao:'));
-        $builder->add('ds_senha',        'email',array('label'=>'E-mail:'));
-        $builder->add('ds_confirma_senha',        'password',array('label'=>'Senha:'));
+        $builder->add('ds_email','email',array('label'=>'E-mail:'));
+        $builder->add('ds_senha','password',array('label'=>'Senha:'));
+        $builder->add('ds_confirma_senha','password',array('label'=>'Confirmar Senha:'));
         $builder->add('estado','entity',array(
               'label'=>'Estado:',
               'empty_value'=>'- Selecione',
@@ -47,7 +47,7 @@ class UsuarioType extends AbstractType
                        },
               'multiple'=>false,
               'expanded'=>false,
-              'required'=>true));
+              'required'=>false));
         $builder->add('como_conheceu','entity',array(
               'label'=>'Como conheceu a revista?',
               'empty_value'=>'- Selecione',
@@ -61,7 +61,7 @@ class UsuarioType extends AbstractType
                        },
               'multiple'=>false,
               'expanded'=>false,
-              'required'=>true));
+              'required'=>false));
         $builder->add('captcha','captcha');
    }
 

@@ -8,7 +8,7 @@
      
 </div>
 <div>
-    Nome: <br>{{ form_widget(form.ds_nome) }}{{ form_errors(form.ds_nome) }}
+    Nome: <br>{{ form_widget(form.nm_usuario) }}{{ form_errors(form.nm_usuario) }}
 </div>
 <div>
     Sexo: <br>{{ form_widget(form.sexo) }}{{ form_errors(form.sexo) }}
@@ -40,7 +40,7 @@
     da revista.
 </div>
 <div>
-{{ form_widget(form.captcha) }}
+{{ form_widget(form.captcha) }}{{ form_errors(form.captcha) }}
 </div>
 
 {{ form_rest(form) }}
