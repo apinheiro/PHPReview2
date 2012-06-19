@@ -47,7 +47,7 @@ class TipoPublicacao
     /**
      * @var PHPReview\WebsiteBundle\Entity\Usuario $login_cadastro
      * 
-     * @ORM\OneToOne(targetEntity="PHPReview\WebsiteBundle\Entity\Usuario")
+     * @ORM\ManyToOne(targetEntity="PHPReview\WebsiteBundle\Entity\Usuario")
      * @ORM\JoinColumn(name="login_cadastro",referencedColumnName="id")
      * 
      */
