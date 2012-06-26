@@ -123,7 +123,7 @@ class TipoPublicacao
      *
      * @param datetime $dataCadastro
      */
-    public function setDataCadastro($dataCadastro)
+    public function setDataCadastro(\DateTime $dataCadastro)
     {
         $this->data_cadastro = $dataCadastro;
     }
@@ -131,7 +131,7 @@ class TipoPublicacao
     /**
      * Get data_cadastro
      *
-     * @return datetime 
+     * @return DateTime
      */
     public function getDataCadastro()
     {

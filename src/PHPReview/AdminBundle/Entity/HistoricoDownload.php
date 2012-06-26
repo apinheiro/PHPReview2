@@ -65,9 +65,9 @@ class HistoricoDownload
     /**
      * Set dt_download
      *
-     * @param datetime $dtDownload
+     * @param DateTime $dtDownload
      */
-    public function setDtDownload($dtDownload)
+    public function setDtDownload(\DateTime $dtDownload)
     {
         $this->dt_download = $dtDownload;
     }
@@ -75,7 +75,7 @@ class HistoricoDownload
     /**
      * Get dt_download
      *
-     * @return datetime 
+     * @return DateTime 
      */
     public function getDtDownload()
     {

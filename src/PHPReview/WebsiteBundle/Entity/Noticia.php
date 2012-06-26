@@ -194,7 +194,7 @@ class Noticia
      *
      * @param datetime $dtPublicacao
      */
-    public function setDtPublicacao($dtPublicacao)
+    public function setDtPublicacao(\DateTime $dtPublicacao)
     {
         $this->dt_publicacao = $dtPublicacao;
     }
@@ -214,7 +214,7 @@ class Noticia
      *
      * @param datetime $dtAlteracao
      */
-    public function setDtAlteracao($dtAlteracao)
+    public function setDtAlteracao(\DateTime $dtAlteracao)
     {
         $this->dt_alteracao = $dtAlteracao;
     }
@@ -234,7 +234,7 @@ class Noticia
      *
      * @param datetime $dtLimite
      */
-    public function setDtLimite($dtLimite)
+    public function setDtLimite(\DateTime $dtLimite)
     {
         $this->dt_limite = $dtLimite;
     }

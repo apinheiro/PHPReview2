@@ -212,7 +212,7 @@ class Publicacao
      *
      * @param datetime $dtPublicacao
      */
-    public function setDtPublicacao($dtPublicacao)
+    public function setDtPublicacao(\DateTime $dtPublicacao)
     {
         $this->dt_publicacao = $dtPublicacao;
     }
