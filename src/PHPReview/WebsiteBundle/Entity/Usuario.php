@@ -7,6 +7,7 @@ use PHPReview\AdminBundle\Entity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use PHPReview\WebsiteBundle\Classe\Gravatar;
 
 /**
  * PHPReview\WebsiteBundle\Entity\Usuario
@@ -127,6 +128,8 @@ class Usuario implements UserInterface, \Serializable
      * @var string $ds_confirma_senha;
      */
     public $ds_confirma_senha;
+    
+    private $gravatar;
     
     /**
      * Get id
@@ -256,6 +259,7 @@ class Usuario implements UserInterface, \Serializable
     public function __construct()
     {
         $this->noticias = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->gravatar = new \PHPReview\WebsiteBundle\Classe\Gravatar();
     }
     
     /**
@@ -490,6 +494,10 @@ class Usuario implements UserInterface, \Serializable
     public function unserialize($data)
     {
        $this->id = unserialize($data);
+    }
+    
+    public function recuperaGravatar(){
+      return $this->gravatar->geraGravatar($this->ds_email);
     }
 
 }
