@@ -56,7 +56,7 @@ class Usuario implements UserInterface, \Serializable
     /**
      * @var string $ds_endereco
      *
-     * @ORM\Column(name="ds_senha", type="string")
+     * @ORM\Column(name="ds_senha", type="string", length="150")
      * @Assert\NotBlank(message="Informe uma senha")
      */
     private $ds_senha;
@@ -64,7 +64,7 @@ class Usuario implements UserInterface, \Serializable
     /**
      * @var string $ds_salt
      * 
-     * @ORM\Column(name="ds_salt",type="string", length="30")
+     * @ORM\Column(name="ds_salt",type="string", length="100")
      */
     private $ds_salt;
     
@@ -385,11 +385,8 @@ class Usuario implements UserInterface, \Serializable
      * então um novo salt será criado.
      * 
     */
-    public function getSalt($novo = false){
-        if ($novo){
-            $this->setSalt(date('YmdHis')); 
-        }
-        return $this->ds_salt;
+    public function getSalt(){
+       return $this->ds_salt;
     }
     
     /**
@@ -407,7 +404,7 @@ class Usuario implements UserInterface, \Serializable
      * @return string
      */
     public function getUsername(){
-        return $this->email;
+        return $this->ds_email;
     }
     
     /**
@@ -440,7 +437,7 @@ class Usuario implements UserInterface, \Serializable
      * @return string 
      */
     public function getPassword(){
-        $this->ds_senha;
+        return $this->ds_senha;
     }
     
     /**
@@ -455,7 +452,7 @@ class Usuario implements UserInterface, \Serializable
      * Override para recuperar a senha do usuário.
      */
     public function getDsSenha(){
-        $this->ds_senha;
+        return $this->ds_senha;
     }
     
     /**
@@ -464,9 +461,10 @@ class Usuario implements UserInterface, \Serializable
      * 
      * @param type $factory 
      */
-    public function criptografaSenha($factory){
+    public function criptografaSenha(EncoderFactoryInterface $factory){
         $encoder = $factory->getEncoder($this);
-        $this->setdsSenha($encoder->encodePassword($this->getDsSenha(), $this->getSalt(true)));
+        $this->setSalt(date('Ymdhis'));
+        $this->setDsSenha($encoder->encodePassword($this->getDsSenha(), $this->getSalt()));
     }
     
     /**

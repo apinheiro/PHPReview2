@@ -1,11 +1,5 @@
 <?php
-
- namespace \PHPReview\WebsiteBundle\Classe;
- 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+ namespace PHPReview\WebsiteBundle\Classe;
  
  class Gravatar {
      
