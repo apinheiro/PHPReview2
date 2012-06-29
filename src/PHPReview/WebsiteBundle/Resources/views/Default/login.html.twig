@@ -1,0 +1,9 @@
+{% if error %}
+    <div class='erro_login'>{{ error.message }}</div>
+{% endif %}
+
+<form method="post" action="{{ path('login_check') }}" name="login">
+{{form_label(form._username) }} <input type="text" name="_username" value="" /><br />
+{{form_label(form._password) }} <input type="password" name="_password" value="" /><br />
+<input type="submit" value="Login" >
+</form>

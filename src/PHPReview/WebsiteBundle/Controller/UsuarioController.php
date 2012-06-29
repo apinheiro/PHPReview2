@@ -10,10 +10,12 @@ use PHPReview\WebsiteBundle\Entity\Usuario as Usuario;
 
 class UsuarioController extends Controller
 {
-    
-    public function indexAction($name)
+    /**
+     * @Template
+     */
+    public function indexAction()
     {
-        return $this->render('WebsiteBundle:Default:index.html.twig', array('name' => $name));
+        return array('name' => $name);
     }
         
     /**
@@ -31,7 +33,10 @@ class UsuarioController extends Controller
             
             if($formulario->isValid()){
               
-              $usuario->criptografaSenha($this->get('security.encoder_factory'));
+              $encoder = $this->get('security.encoder_factory')->getEncoder( $usuario);
+               $usuario->setSalt(date('dmYHis'));
+               $usuario->setDsSenha($encoder->encodePassword( $usuario->getDsSenha(),  $usuario->getSalt()));
+              // $usuario->criptografaSenha($this->get('security.encoder_factory'));
               $usuario->setRole('ROLE_USER');
               $usuario->setDtCriacao(\DateTime::createFromFormat(\Datetime::ATOM, date(\Datetime::ATOM)));
               $usuario->setDtAtualizacao(\DateTime::createFromFormat(\Datetime::ATOM, date(\Datetime::ATOM)));
@@ -54,5 +59,12 @@ class UsuarioController extends Controller
      */
     public function sucessoAction(){
         return array();
+    }
+    
+    /**
+     * @Template() 
+     */
+    public function recuperaSenhaAction(){
+        
     }
 }

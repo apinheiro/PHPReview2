@@ -2,11 +2,11 @@ homepage:
     pattern:  /
     defaults: { _controller: WebsiteBundle:Default:index }
     
-WebsiteBundle_login:
+login:
     pattern: /login
     defaults: { _controller: WebsiteBundle:Default:login }
 
-WebsiteBundle_login_check:
+login_check:
     pattern: /login_check
     
 homepage_cadastro:
