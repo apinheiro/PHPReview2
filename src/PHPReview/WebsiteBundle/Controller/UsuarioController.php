@@ -33,10 +33,7 @@ class UsuarioController extends Controller
             
             if($formulario->isValid()){
               
-              $encoder = $this->get('security.encoder_factory')->getEncoder( $usuario);
-               $usuario->setSalt(date('dmYHis'));
-               $usuario->setDsSenha($encoder->encodePassword( $usuario->getDsSenha(),  $usuario->getSalt()));
-              // $usuario->criptografaSenha($this->get('security.encoder_factory'));
+              $usuario->criptografaSenha($this->get('security.encoder_factory'));
               $usuario->setRole('ROLE_USER');
               $usuario->setDtCriacao(\DateTime::createFromFormat(\Datetime::ATOM, date(\Datetime::ATOM)));
               $usuario->setDtAtualizacao(\DateTime::createFromFormat(\Datetime::ATOM, date(\Datetime::ATOM)));

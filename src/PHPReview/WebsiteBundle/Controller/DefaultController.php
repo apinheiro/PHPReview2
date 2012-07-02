@@ -7,13 +7,23 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use Symfony\Component\Security\Core\SecurityContext;
 use PHPReview\WebsiteBundle\Form\LoginType;
+use PHPReview\WebsiteBundle\Entity\Usuario;
 
 class DefaultController extends Controller
 {
     
+    /**
+     * @Template()
+     * @return type 
+     */
     public function indexAction()
     {
-        return $this->render('WebsiteBundle:Default:index.html.twig');
+        
+       $usuario = $this->getDoctrine()->getRepository('WebsiteBundle:Usuario')->find(2);
+        
+       $enc = $this->get('security.encoder_factory');
+       $senha = $enc->getEncoder($usuario)->encodePassword('PHPReview123',$usuario->getSalt());
+        return array('senha_original'=>$usuario->getPassword(). " - ". $usuario->getSalt(),'senha_calculada'=>$senha);
     }
     
     /**
@@ -36,4 +46,5 @@ class DefaultController extends Controller
         return array('form'=>$formulario->createView(),'error'=>$error);
     }
     
+   
 }

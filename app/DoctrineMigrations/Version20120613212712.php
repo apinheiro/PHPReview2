@@ -9,12 +9,14 @@ use Doctrine\DBAL\Migrations\AbstractMigration,
  * Usuário Administrador
  * 
  * Esta migration serve para criar o usuário administrador do sistema.
+ * 
+ * Senha Original do Administrador: PHPReview123
  */
 class Version20120613212712 extends AbstractMigration
 {
     public function up(Schema $schema)
     {
-        $this->connection->insert('usuario',array('nm_usuario'=>'Administrador','ds_email'=>'administrador@phpreview.net','sexo'=>'M','ds_senha'=>'34bd6fa903faac42c0e6810686fb48b8f24c5e32','ds_salt'=>'MjxNjExNDY=','dt_criacao'=>date(\Datetime::ATOM),'dt_atualizacao'=>date(\Datetime::ATOM),'ds_role'=>'ROLE_SUPER_ADMIN'));
+        $this->connection->insert('usuario',array('nm_usuario'=>'Administrador','ds_email'=>'administrador@phpreview.net','sexo'=>'M','ds_senha'=>'35dsq+UKFKLLGcjduxBqD1xVY268=','ds_salt'=>'MjAxMjA3MDIwNjMzMDU=','dt_criacao'=>date(\Datetime::ATOM),'dt_atualizacao'=>date(\Datetime::ATOM),'ds_role'=>'ROLE_SUPER_ADMIN'));
 
     }
 

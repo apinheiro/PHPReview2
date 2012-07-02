@@ -8,6 +8,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use PHPReview\WebsiteBundle\Classe\Gravatar;
+use Symfony\Component\Security\Core\Encoder\EncoderFactory as EncoderFactory;
 
 /**
  * PHPReview\WebsiteBundle\Entity\Usuario
@@ -461,7 +462,7 @@ class Usuario implements UserInterface, \Serializable
      * 
      * @param type $factory 
      */
-    public function criptografaSenha(EncoderFactoryInterface $factory){
+    public function criptografaSenha(EncoderFactory $factory){
         $encoder = $factory->getEncoder($this);
         $this->setSalt(date('Ymdhis'));
         $this->setDsSenha($encoder->encodePassword($this->getDsSenha(), $this->getSalt()));

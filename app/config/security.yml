@@ -19,8 +19,8 @@ security:
     encoders:
         PHPReview\WebsiteBundle\Entity\Usuario:
             algorithm:  sha1
-            iterations: 1
-            encode_as_base64: false
+            iterations: 5000
+            encode_as_base64: true
 
     firewalls:
         secured_area:
