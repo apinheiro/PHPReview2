@@ -64,4 +64,18 @@ class UsuarioController extends Controller
     public function recuperaSenhaAction(){
         
     }
+    
+    /**
+     * @Template()
+     * @return type 
+     */
+    public function getContagemAction(){
+      $qb = $entityManager->createQueryBuilder();
+      $qb->select('count(u.id)');
+      $qb->from('WebsiteBundle:Usuario','u');
+      $qb->where('u.in_disponivel = 1');
+
+       $count = $qb->getQuery()->getSingleScalarResult();
+       return array('total'=>$count);
+    }
 }
