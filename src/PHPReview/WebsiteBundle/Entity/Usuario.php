@@ -130,7 +130,19 @@ class Usuario implements UserInterface, \Serializable
      */
     public $ds_confirma_senha;
     
+    /**
+     *
+     * @var Gravatar $gravatar
+     */
     private $gravatar;
+    
+    /**
+     * @ORM\Column(name="in_ativo",type="boolean")
+     * 
+     * @var boolean $in_ativo 
+     */
+    private $in_ativo;
+    
     
     /**
      * Get id
@@ -497,6 +509,14 @@ class Usuario implements UserInterface, \Serializable
     
     public function recuperaGravatar(){
       return $this->gravatar->geraGravatar($this->ds_email);
+    }
+    
+    public function getInAtivo(){
+        return $this->in_ativo;
+    }
+    
+    public function setInAtivo(boolean $ativo){
+        $this->in_ativo = $ativo;
     }
 
 }

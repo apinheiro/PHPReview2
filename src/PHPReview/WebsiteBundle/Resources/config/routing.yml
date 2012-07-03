@@ -20,3 +20,9 @@ homepage_cadastro_sucesso:
     defaults: {_controller:WebsiteBundle:Usuario:sucesso, _format:html}
     requirements:
         _format: html
+
+contagem_usuarios:
+    pattern: /usuarios/contagem.{_format}
+    defaults: {_controller:WebsiteBundle:Usuario:getContagem }
+    requirements:
+         _format: html|htm|xml|json
