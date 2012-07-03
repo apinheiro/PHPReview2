@@ -143,6 +143,12 @@ class Usuario implements UserInterface, \Serializable
      */
     private $in_ativo;
     
+     /**
+     * @var PHPReview\AdminBundle\Entity\Chave $chave
+     * @ORM\OneToMany(targetEntity="PHPReview\AdminBundle\Entity\Chave",mappedBy="usuario")
+     */
+    private $chaves;
+    
     
     /**
      * Get id
@@ -519,4 +525,64 @@ class Usuario implements UserInterface, \Serializable
         $this->in_ativo = $ativo;
     }
 
+
+    /**
+     * Set ds_salt
+     *
+     * @param string $dsSalt
+     */
+    public function setDsSalt($dsSalt)
+    {
+        $this->ds_salt = $dsSalt;
+    }
+
+    /**
+     * Get ds_salt
+     *
+     * @return string 
+     */
+    public function getDsSalt()
+    {
+        return $this->ds_salt;
+    }
+
+    /**
+     * Get role
+     *
+     * @return string 
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
+     * Add noticias
+     *
+     * @param PHPReview\WebsiteBundle\Entity\Noticia $noticias
+     */
+    public function addNoticia(\PHPReview\WebsiteBundle\Entity\Noticia $noticias)
+    {
+        $this->noticias[] = $noticias;
+    }
+
+    /**
+     * Add chaves
+     *
+     * @param PHPReview\AdminBundle\Entity\Chave $chaves
+     */
+    public function addChave(\PHPReview\AdminBundle\Entity\Chave $chaves)
+    {
+        $this->chaves[] = $chaves;
+    }
+
+    /**
+     * Get chaves
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getChaves()
+    {
+        return $this->chaves;
+    }
 }

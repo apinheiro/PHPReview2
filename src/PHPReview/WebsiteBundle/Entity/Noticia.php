@@ -314,4 +314,24 @@ class Noticia
     {
         return $this->usuario;
     }
+
+    /**
+     * Add tags
+     *
+     * @param PHPReview\AdminBundle\Entity\Tags $tags
+     */
+    public function addTags(\PHPReview\AdminBundle\Entity\Tags $tags)
+    {
+        $this->tags[] = $tags;
+    }
+
+    /**
+     * Get tags
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
 }

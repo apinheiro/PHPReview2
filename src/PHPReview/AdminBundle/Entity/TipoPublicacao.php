@@ -202,4 +202,14 @@ class TipoPublicacao
     {
         return $this->publicacoes;
     }
+
+    /**
+     * Add publicacoes
+     *
+     * @param PHPReview\WebsiteBundle\Entity\Publicacao $publicacoes
+     */
+    public function addPublicacao(\PHPReview\WebsiteBundle\Entity\Publicacao $publicacoes)
+    {
+        $this->publicacoes[] = $publicacoes;
+    }
 }
