@@ -99,19 +99,22 @@ class UsuarioController extends Controller
      * @Template
      */
     public function validaCadastroAction($token = null){
+        // Se o token não foi informado, verificar se veio por POST
+        $_token = $token;
         
-        $token = str_replace('token=', '', $token);
-        
-        if (empty($token)){
-          return array('sucesso'=>0);   
+        if (is_null($_token)){
+          $request = $this->getRequest();
+          if ($request->getMethod() == "POST"){
+              $_token = $request->request->get('token');
+          }else{
+             return array('sucesso'=>0);   
+          }
         }
         
         $valido = false;
-        // Correção para a tela de validação do usuario.
-        
         
         $em = $this->getDoctrine()->getEntityManager();
-        $chave = $em->getRepository('AdminBundle:Chave')->findOneByChave($token);
+        $chave = $em->getRepository('AdminBundle:Chave')->findOneByChave($_token);
         
         // verificando se a chave existe
         if (!$chave){

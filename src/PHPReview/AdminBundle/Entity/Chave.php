@@ -20,10 +20,11 @@ class Chave
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-/**
- * @ORM\Column(name="chave", type="string",length="200")
- * @var type 
- */
+    
+    /**
+    * @ORM\Column(name="chave", type="string",length="200")
+    * @var type 
+    */
     private $chave;
     /**
      * @var datetime $data_registro

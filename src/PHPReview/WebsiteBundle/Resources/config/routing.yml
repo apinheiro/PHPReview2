@@ -29,7 +29,10 @@ contagem_usuarios:
          
 validar_chave_usuario:
     pattern: /valida_cadastro/{token}
-    defaults: {_controller: WebsiteBundle:Usuario:validaCadastro, token:null }
+    defaults: {_controller: WebsiteBundle:Usuario:validaCadastro, token:null}
     requirements:
        _method: GET
-    
+       
+validar_chave_usuario2:
+    pattern: /validar_cadastro.html
+    defaults: { _controller: WebsiteBundle:Usuario:validaCadastro, token:null}

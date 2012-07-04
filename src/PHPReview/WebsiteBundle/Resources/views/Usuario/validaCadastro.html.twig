@@ -11,7 +11,7 @@
 <p>Insira este código no campo abaixo para que o seu cadastro seja validado.</p> 
  
 <div class="campo_cadastro_token">
- <form method="get" action="{{ path('validar_chave_usuario',{'token':''}) }}" >
+ <form method="post" action="{{ path('validar_chave_usuario2') }}" >
     <input type="text" size="20" name="token" >
     <input type="submit" value="Validar">
  </form>

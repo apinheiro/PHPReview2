@@ -17,7 +17,9 @@ $loader->registerNamespaces(array(
     'Doctrine\\DBAL\\Migrations' => __DIR__.'/../vendor/doctrine-migrations/lib',
     'FOS'              => __DIR__.'/../vendor/bundles',
     'Gregwar'          => __DIR__.'/../vendor/bundles',
+    'Doctrine\\Bundle' => __DIR__.'/../vendor/bundles',
 ));
+
 $loader->registerPrefixes(array(
     'Twig_Extensions_' => __DIR__.'/../vendor/twig-extensions/lib',
     'Twig_'            => __DIR__.'/../vendor/twig/lib',
