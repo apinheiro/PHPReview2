@@ -521,7 +521,10 @@ class Usuario implements UserInterface, \Serializable
         return $this->in_ativo;
     }
     
-    public function setInAtivo(boolean $ativo){
+    public function setInAtivo($ativo){
+        if (!is_bool($ativo)){
+            throw new \Symfony\Component\Validator\Exception\ValidatorException('O campo deve ser booleano');
+        }
         $this->in_ativo = $ativo;
     }
 

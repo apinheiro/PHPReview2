@@ -1,0 +1,26 @@
+{% if app.session.hasFlash('notice') %}
+  <div class="flash_notice">{{ app.session.flash('notice') }}</div>
+{% endif %}
+{% if app.session.hasFlash('error') %}
+  <div class="flash_error">{{ app.session.flash('error') }}</div>
+{% endif %}
+
+{% if sucesso == 0 %}
+
+<p>O seu cadastro ainda não foi finalizado. Você recebeu um e-mail com um código de acesso.</p>
+<p>Insira este código no campo abaixo para que o seu cadastro seja validado.</p> 
+ 
+<div class="campo_cadastro_token">
+ <form method="get" action="{{ path('validar_chave_usuario',{'token':''}) }}" >
+    <input type="text" size="20" name="token" >
+    <input type="submit" value="Validar">
+ </form>
+</div>
+
+{% else %}
+
+ <p>Parabéns, o seu cadastro foi realizado com sucesso!</p>
+ <p>A partir de agora você poderá acessar o conteúdo da revista PHP Review e ficar atualizado de 
+    todas as tendências da programação PHP, além de dicas, tutoriais, matérias especiais e muito mais.
+ </p>
+{% endif %}

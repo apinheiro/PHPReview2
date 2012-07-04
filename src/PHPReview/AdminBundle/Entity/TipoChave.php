@@ -30,10 +30,10 @@ class TipoChave
     
     /**
      *
-     * @var Chave $usuario
+     * @var Chave $chaves
      * @ORM\OneToMany(targetEntity="Chave",mappedBy="tipo_chave")
      */
-    private $usuarios;
+    private $chaves;
 
 
     /**
@@ -67,7 +67,7 @@ class TipoChave
     }
     public function __construct()
     {
-        $this->usuarios = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->chaves = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -75,9 +75,9 @@ class TipoChave
      *
      * @param PHPReview\AdminBundle\Entity\Chave $usuarios
      */
-    public function addChave(\PHPReview\AdminBundle\Entity\Chave $usuarios)
+    public function addChave(\PHPReview\AdminBundle\Entity\Chave $chave)
     {
-        $this->usuarios[] = $usuarios;
+        $this->chaves[] = $chave;
     }
 
     /**
@@ -85,8 +85,8 @@ class TipoChave
      *
      * @return Doctrine\Common\Collections\Collection 
      */
-    public function getUsuarios()
+    public function getChaves()
     {
-        return $this->usuarios;
+        return $this->chaves;
     }
 }

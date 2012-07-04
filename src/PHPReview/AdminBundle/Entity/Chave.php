@@ -85,7 +85,7 @@ class Chave
      *
      * @param datetime $dataRegistro
      */
-    public function setDataRegistro($dataRegistro)
+    public function setDataRegistro(\Datetime $dataRegistro)
     {
         $this->data_registro = $dataRegistro;
     }
@@ -105,7 +105,7 @@ class Chave
      *
      * @param datetime $dataExpira
      */
-    public function setDataExpira($dataExpira)
+    public function setDataExpira(\Datetime $dataExpira)
     {
         $this->data_expira = $dataExpira;
     }
@@ -199,12 +199,31 @@ class Chave
     {
         return $this->usuario;
     }
-    
+    /**
+     *
+     * @return string 
+     */
     public function getChave(){
         return $this->chave;
     }
     
+    /**
+     *
+     * @param string $chave 
+     */
     public function setChave($chave){
         $this->chave = $chave;
+    }
+    
+    public static function generateChave($tamanho = 10){
+        $letras = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890';
+        $item = '';
+        $i = 0;
+        while ($i < $tamanho){
+            $num = rand(0,strlen($letras)-1);
+            $item .= $letras[$num];
+            $i++;
+        }
+        return $item;
     }
 }

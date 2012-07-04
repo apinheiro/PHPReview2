@@ -26,3 +26,10 @@ contagem_usuarios:
     defaults: {_controller:WebsiteBundle:Usuario:getContagem }
     requirements:
          _format: html|htm|xml|json
+         
+validar_chave_usuario:
+    pattern: /valida_cadastro/{token}
+    defaults: {_controller: WebsiteBundle:Usuario:validaCadastro, token:null }
+    requirements:
+       _method: GET
+    
