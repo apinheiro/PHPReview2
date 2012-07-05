@@ -12,6 +12,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class TipoChave
 {
+    
+    const CONFIRMAR_CADASTRO = 1;
+    const NOVA_SENHA = 2;
+    const VALIDAR_DOCUMENTO = 3;
+    
     /**
      * @var integer $id
      *
@@ -34,6 +39,8 @@ class TipoChave
      * @ORM\OneToMany(targetEntity="Chave",mappedBy="tipo_chave")
      */
     private $chaves;
+    
+
 
 
     /**
