@@ -36,3 +36,13 @@ validar_chave_usuario:
 validar_chave_usuario2:
     pattern: /validar_cadastro.html
     defaults: { _controller: WebsiteBundle:Usuario:validaCadastro, token:null}
+    
+recuperar_senha_usuario:
+  pattern: /recuperar_senha.{_format}
+  defaults: { _controller: WebsiteBundle:Usuario:recuperarSenha, _format:html}
+  requirements:
+    _format: html| htm
+
+recuperar_senha_usuario_form:
+  pattern: /nova_senha/{token}
+  defaults: { _controller: WebsiteBundle:Usuario:novaSenha, token:null}

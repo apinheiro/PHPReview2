@@ -1,0 +1,14 @@
+<p>Informe a nova senha</p>
+
+<form method='post' action='{{ path('recuperar_senha_usuario_form',{'token':''}) }}/{{ token }}' name="recupera" >
+ Senha: <input type='password' name='senha' /><br />
+ Confirmar: <input type='password' name='re_senha'><br />
+<input type='submit' value='Enviar' />
+</form>
+
+
+{% block javascript %}
+  $('form[name="recupera"]').submit(function(){
+     return $('input[name="senha"]').val() == $('input[name="re_senha"]').val(); 
+  });
+{% endblock %}
