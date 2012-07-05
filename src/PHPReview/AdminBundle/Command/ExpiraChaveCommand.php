@@ -15,7 +15,7 @@
      }
      
      protected function execute(InputInterface $input, OutputInterface $output){
-         $output->writeln('Iniciando a verificacao de chaves expiradas '. date('Y-m-d H:i:s'));
+         $output->writeln(date('[d/m/Y H:i:s] ').'Iniciando a verificacao de chaves expiradas ');
          
          $em = $this->getContainer()->get('doctrine')->getEntityManager();
          $qb = $em->createQueryBuilder();
@@ -27,7 +27,7 @@
          
          $chaves = $qb->getQuery()->getResult();
          
-         $output->writeln('Total de chaves encontradas: '. count($chaves));
+         $output->writeln(date('[d/m/Y H:i:s] ').'Total de chaves encontradas: '. count($chaves));
 
          for($i = 0; $i < count($chaves);$i++){
             $chaves[$i]->setInExpirado(true);
@@ -35,7 +35,8 @@
          
          $em->flush();
          
-         $output->writeln('Fim da verificacao de chaves expiradas');
+         $output->writeln(date('[d/m/Y H:i:s] ').'Fim da verificacao de chaves expiradas');
+         $output->writeln('-----------/>');
      }
  }
 ?>
