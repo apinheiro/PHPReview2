@@ -57,13 +57,13 @@ class UsuarioController extends Controller
               $usuario->setDtAtualizacao(\DateTime::createFromFormat(\Datetime::ATOM, date(\Datetime::ATOM)));
               $usuario->setInAtivo(false);
 
-              $chave = $this->geraChave($usuario, $em);
+              $chave = $this->geraChave($usuario, $em, TipoChave::CONFIRMAR_CADASTRO);
 
               $em->persist($usuario);
               $em->persist($chave);
               $em->flush();
               
-              $this->enviaEmailConfirmacao($chave);
+              $this->enviaEmailConfirmacao($chave, $usuario);
               
               $this->get('session')->setFlash('notice', 'Usuario criado com sucesso!');
               return $this->redirect($this->generateUrl('homepage_cadastro_sucesso'));   
@@ -103,7 +103,7 @@ class UsuarioController extends Controller
            $this->flush();
            
            // aqui envia o e-mail pro usuario.
-           $this->enviaEmailConfirmacao($chave);
+           $this->enviaEmailConfirmacao($chave, $usuario);
            
            $this->get('session')->setFlash('notice','Foi enviado um e-mail com um código para você revalidar a sua senha.');
            return $this->redirect($this->generateUrl('validar_chave_usuario2'));
@@ -117,16 +117,14 @@ class UsuarioController extends Controller
    public function novaSenhaAction($token = null){
        // somente quem informar o token que poderá acessar esta página.
        if (is_null($token)){
-           echo "TOKEN NULO";
-           # return $this->redirect($this->generateUrl('homepage'));
+          return $this->redirect($this->generateUrl('homepage'));
        }
        
        $em = $this->getDoctrine()->getEntityManager();
        $chave = $em->getRepository('AdminBundle:Chave')->findOneByChave($token);
        
        if (!$chave){
-           echo 'CHAVE NAO ENCONTRADA';
-          # return $this->redirect($this->generateUrl('homepage')); 
+          return $this->redirect($this->generateUrl('homepage')); 
        }
        
        if ($chave->getInExpirado() || $chave->getInUsado()){
@@ -222,12 +220,12 @@ class UsuarioController extends Controller
         return $chave;
     }
     
-    private function enviaEmailConfirmacao($chave){
+    private function enviaEmailConfirmacao($chave, $usuario){
        $email = \Swift_Message::newInstance()
                ->setSubject('Confirmação de cadastro')
                ->setFrom('contato@phpreview.br')
                ->setTo($usuario->getDsEmail())
-               ->setBody($this->renderView('WebsiteBundle:Emails:confirm_cadastro.html.twig',array('chave'=>$chave)));
+               ->setBody($this->renderView('WebsiteBundle:Emails:confirm.html.twig',array('chave'=>$chave)));
        $this->get('mailer')->send($email);
    }
 }
