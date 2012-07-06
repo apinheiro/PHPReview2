@@ -1,0 +1,14 @@
+<h1>Usuário: {{ usuario.getNmUsuario() }}</h1>
+<p>Usuário cadastrado em {{ usuario.getDtCriacao('d/m/Y H:i') }}</p>
+<p>Última Atualização {{ usuario.getDtAtualizacao('d/m/Y H:i') }}</p>
+<table>
+    <tr><td><img src="{{ (usuario.geraGravatar(usuario.getDsEmail())) }}" alt="Gravatar" class="gravatar"></td></tr>
+    <tr><td>Email: </td><td>{{ usuario.getDsEmail() }}</td></tr>
+    <tr><td>Sexo: </td><td>{% if usuario.getSexo() == "F" %} F - Feminino {% else %} M - Masculino {% endif %}</td></tr>
+    <tr><td>Estado: </td><td>{{ usuario.getEstado().getDsEstado()|default('') }} - {{ usuario.getEstado().getNacao()|default('') }}</td></tr>
+    <tr><td colspan="2"> Informações sobre o usuário</td></tr>
+    <tr><td>Nível de cargo: </td><td>{{ usuario.getCargo().getDsCargo()|default('') }}</td></tr>
+    <tr><td>Escolaridade: </td><td>{{ usuario.getEscolaridade().getDsEscolaridade()|default('') }}</td></tr>
+    <tr><td>Como conheceu a revista: </td><td>{{ usuario.getComoConheceu().getDsComoConheceu()|default('') }}</td></tr>
+    <tr><td>Total de Notícias: </td><td>{{ usuario.getNoticias().count() }}</td></tr>
+</table>

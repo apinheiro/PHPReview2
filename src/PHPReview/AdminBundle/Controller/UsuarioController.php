@@ -15,10 +15,10 @@ use PHPReview\WebsiteBundle\Entity\Usuario as Usuario;
  */
 class UsuarioController extends Controller
 {
+    
     /**
      * @Template()
-     * @Route("/")
-     * @Secure(roles="ROLE_ADMIN")
+     * @Route("")
      * @param type $name 
      */
     public function indexAction()
@@ -27,17 +27,24 @@ class UsuarioController extends Controller
         $usuarios = $em->createQuery('select u from WebsiteBundle:Usuario u');
         
         $paginator = $this->get('knp_paginator');
-        $pagination = $paginator->paginate(
-                $query,
-                $this->getRequest()->query->get('p',1),20
-                );
-        return array('usuarios'=>compact('pagination'));
+        $pagination = $paginator->paginate($usuarios);
+        return compact('pagination');
+    }
+    
+    /**
+     * @Route("/{id}.{_format}",requirements={"id" = "\d+","_format"="html|htm|json"})
+     * @Template()
+     */
+    public function showAction($id){
+        $em = $this->getDoctrine()->getEntityManager();
+        $usuario = $em->getRepository('WebsiteBundle:Usuario')->find($id);
+        
+        return array('usuario'=>$usuario);
     }
     
     /**
      * @Route("/new")
      */
-      
     public function newAction()
     {
         

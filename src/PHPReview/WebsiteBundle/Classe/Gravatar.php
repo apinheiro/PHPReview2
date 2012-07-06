@@ -9,7 +9,7 @@
       * Informa qual a url que deve ser usada para acessar a imagem do gravatar.
       * @var String $url
       */
-     private $url;
+     private $url = "http://www.gravatar.com/avatar/";
      
      /**
       * Imagem Alternativa
@@ -19,7 +19,7 @@
       * 
       * @var string $url_imagem_alternativa
       */
-     private $url_imagem_alternativa = "http://www.phpreview.net/images/gravatar.jpg";
+     private $url_imagem_alternativa = "http://www.phpreview.br:8080/bundles/admin/images/usuario.png";
      
      /**
       * E-mail do usuário
@@ -36,7 +36,7 @@
       * Largura no qual será apresentada a imagem.
       * @var integer $largura_imagem
       */
-     private $largura_imagem = 50;
+     private $largura_imagem = 64;
      
      public function __construct() {} 
      
@@ -48,7 +48,7 @@
          
          $retorno = $this->url . $email_cripto;
          $retorno .= "?d=".urlencode($this->url_imagem_alternativa);
-         $retorno .= "&s=". $this->largura. "&r=g";
+         $retorno .= "&s=". $this->largura_imagem. "&r=g";
          
          return $retorno;
      }

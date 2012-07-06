@@ -15,11 +15,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 class DefaultController extends Controller
 {
     /**
-    * @Route("",defaults={"name"="André"})
-    * @Route("{name}")
+    * @Route("")
     */
-    public function indexAction($name)
+    public function indexAction()
     {
-        return $this->render('AdminBundle:Default:index.html.twig', array('name' => $name));
+        return $this->render('AdminBundle:Default:index.html.twig', array('name' => ''));
     }
 }

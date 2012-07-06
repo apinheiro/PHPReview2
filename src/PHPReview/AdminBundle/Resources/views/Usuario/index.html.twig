@@ -1,0 +1,23 @@
+<h1>Usuários</h1>
+
+<table>
+<tr>
+{# sorting of properties based on query components #}
+    <th>{{ pagination.sortable('Id', 'u.id')|raw }}</th>
+    <th>{{ pagination.sortable('Title', 'u.nm_usuario')|raw }}</th>
+    <th>{{ pagination.sortable('Title', 'u.ds_email')|raw }}</th>
+</tr>
+
+{# table body #}
+{% for usuario in pagination %}
+<tr {% if loop.index is odd %}class="color"{% endif %}>
+    <td><a href="{{path('phpreview_admin_usuario_edit',{'id': usuario.id} )}}">{{ usuario.id }}</a></td>
+    <td><a href="{{path('phpreview_admin_usuario_show',{'id': usuario.id,'_format':'html'} )}}">{{ usuario.getNmUsuario() }}</a></td>
+    <td>{{ usuario.getDsEmail() }}</td>
+</tr>
+{% endfor %}
+</table>
+{# display navigation #}
+<div class="navigation">
+    {{ pagination.render()|raw }}
+</div>

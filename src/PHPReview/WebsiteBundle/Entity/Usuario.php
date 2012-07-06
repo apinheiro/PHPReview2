@@ -7,7 +7,7 @@ use PHPReview\AdminBundle\Entity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use PHPReview\WebsiteBundle\Classe\Gravatar;
+use PHPReview\WebsiteBundle\Classe\Gravatar as Gravatar;
 use Symfony\Component\Security\Core\Encoder\EncoderFactory as EncoderFactory;
 
 /**
@@ -17,7 +17,7 @@ use Symfony\Component\Security\Core\Encoder\EncoderFactory as EncoderFactory;
  * @ORM\Entity
  * @UniqueEntity(fields = "ds_email",message = "Este E-mail ja esta sendo utilizado.")
  */
-class Usuario implements UserInterface, \Serializable
+class Usuario extends Gravatar implements UserInterface, \Serializable
 {
     /**
      * @var integer $id
@@ -278,7 +278,6 @@ class Usuario implements UserInterface, \Serializable
     public function __construct()
     {
         $this->noticias = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->gravatar = new \PHPReview\WebsiteBundle\Classe\Gravatar();
     }
     
     /**
@@ -513,10 +512,6 @@ class Usuario implements UserInterface, \Serializable
        $this->id = unserialize($data);
     }
     
-    public function recuperaGravatar(){
-      return $this->gravatar->geraGravatar($this->ds_email);
-    }
-    
     public function getInAtivo(){
         return $this->in_ativo;
     }
@@ -588,4 +583,5 @@ class Usuario implements UserInterface, \Serializable
     {
         return $this->chaves;
     }
+    
 }
