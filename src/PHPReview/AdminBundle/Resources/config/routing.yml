@@ -1,11 +1,7 @@
-AdminBundle_homepage:
-    pattern:  /
-    defaults: { _controller: AdminBundle:Default:index }
-    
-AdminBundle_login:
-    pattern: /login
-    defaults: { _controller: AdminBundle:Default:login }
+homepage:
+    resource: PHPReview\AdminBundle\Controller\DefaultController
+    type:     annotation
 
-AdminBundle_login_check:
-    pattern: /login_check
-
+usuario: 
+    resource: PHPReview\AdminBundle\Controller\UsuarioController
+    type:     annotation

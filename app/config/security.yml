@@ -39,6 +39,6 @@ security:
     access_control:
          - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
          - { path: ^/edicoes, roles: ROLE_USER }
-         - { path: /admin, roles: ROLE_SUPER_USER } 
+         # - { path: /admin, roles: ROLE_SUPER_USER } 
          #, requires_channel: https }
          #- { path: ^/_internal, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }
