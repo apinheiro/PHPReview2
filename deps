@@ -83,3 +83,10 @@
     git=git://github.com/Gregwar/CaptchaBundle.git
     target=/bundles/Gregwar/CaptchaBundle
     version=origin/2.0
+
+[knp-components]
+    git=http://github.com/KnpLabs/knp-components.git
+
+[KnpPaginatorBundle]
+    git=http://github.com/KnpLabs/KnpPaginatorBundle.git
+    target=bundles/Knp/Bundle/PaginatorBundle

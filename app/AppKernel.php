@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new PHPReview\WebsiteBundle\WebsiteBundle(),
             new PHPReview\AdminBundle\AdminBundle(),
             new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
         );
 
 

@@ -18,6 +18,8 @@ $loader->registerNamespaces(array(
     'FOS'              => __DIR__.'/../vendor/bundles',
     'Gregwar'          => __DIR__.'/../vendor/bundles',
     'Doctrine\\Bundle' => __DIR__.'/../vendor/bundles',
+    'Knp\\Component'   => __DIR__.'/../vendor/knp-components/src',
+    'Knp\\Bundle'      => __DIR__.'/../vendor/bundles',
 ));
 
 $loader->registerPrefixes(array(
