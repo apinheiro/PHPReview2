@@ -2718,3 +2718,403 @@ Array
         )
 
 )
+Array
+(
+    [name] => TagNoticia
+    [schema] => 
+)
+Array
+(
+    [name] => TagNoticia
+    [schema] => 
+    [joinColumns] => Array
+        (
+            [0] => Array
+                (
+                    [name] => id_noticia
+                    [referencedColumnName] => id
+                    [unique] => 
+                    [nullable] => 1
+                    [onDelete] => 
+                    [onUpdate] => 
+                    [columnDefinition] => 
+                )
+
+        )
+
+    [inverseJoinColumns] => Array
+        (
+            [0] => Array
+                (
+                    [name] => id_tag
+                    [referencedColumnName] => id
+                    [unique] => 
+                    [nullable] => 1
+                    [onDelete] => 
+                    [onUpdate] => 
+                    [columnDefinition] => 
+                )
+
+        )
+
+)
+Array
+(
+    [name] => TagNoticia
+    [schema] => 
+)
+Array
+(
+    [name] => TagNoticia
+    [schema] => 
+    [joinColumns] => Array
+        (
+            [0] => Array
+                (
+                    [name] => id_noticia
+                    [referencedColumnName] => id
+                    [unique] => 
+                    [nullable] => 1
+                    [onDelete] => 
+                    [onUpdate] => 
+                    [columnDefinition] => 
+                )
+
+        )
+
+    [inverseJoinColumns] => Array
+        (
+            [0] => Array
+                (
+                    [name] => id_tag
+                    [referencedColumnName] => id
+                    [unique] => 
+                    [nullable] => 1
+                    [onDelete] => 
+                    [onUpdate] => 
+                    [columnDefinition] => 
+                )
+
+        )
+
+)
+Array
+(
+    [name] => TagNoticia
+    [schema] => 
+)
+Array
+(
+    [name] => TagNoticia
+    [schema] => 
+    [joinColumns] => Array
+        (
+            [0] => Array
+                (
+                    [name] => id_noticia
+                    [referencedColumnName] => id
+                    [unique] => 
+                    [nullable] => 1
+                    [onDelete] => 
+                    [onUpdate] => 
+                    [columnDefinition] => 
+                )
+
+        )
+
+    [inverseJoinColumns] => Array
+        (
+            [0] => Array
+                (
+                    [name] => id_tag
+                    [referencedColumnName] => id
+                    [unique] => 
+                    [nullable] => 1
+                    [onDelete] => 
+                    [onUpdate] => 
+                    [columnDefinition] => 
+                )
+
+        )
+
+)
+Array
+(
+    [name] => TagNoticia
+    [schema] => 
+)
+Array
+(
+    [name] => TagNoticia
+    [schema] => 
+    [joinColumns] => Array
+        (
+            [0] => Array
+                (
+                    [name] => id_noticia
+                    [referencedColumnName] => id
+                    [unique] => 
+                    [nullable] => 1
+                    [onDelete] => 
+                    [onUpdate] => 
+                    [columnDefinition] => 
+                )
+
+        )
+
+    [inverseJoinColumns] => Array
+        (
+            [0] => Array
+                (
+                    [name] => id_tag
+                    [referencedColumnName] => id
+                    [unique] => 
+                    [nullable] => 1
+                    [onDelete] => 
+                    [onUpdate] => 
+                    [columnDefinition] => 
+                )
+
+        )
+
+)
+Array
+(
+    [name] => TagNoticia
+    [schema] => 
+)
+Array
+(
+    [name] => TagNoticia
+    [schema] => 
+    [joinColumns] => Array
+        (
+            [0] => Array
+                (
+                    [name] => id_noticia
+                    [referencedColumnName] => id
+                    [unique] => 
+                    [nullable] => 1
+                    [onDelete] => 
+                    [onUpdate] => 
+                    [columnDefinition] => 
+                )
+
+        )
+
+    [inverseJoinColumns] => Array
+        (
+            [0] => Array
+                (
+                    [name] => id_tag
+                    [referencedColumnName] => id
+                    [unique] => 
+                    [nullable] => 1
+                    [onDelete] => 
+                    [onUpdate] => 
+                    [columnDefinition] => 
+                )
+
+        )
+
+)
+Array
+(
+    [name] => TagNoticia
+    [schema] => 
+)
+Array
+(
+    [name] => TagNoticia
+    [schema] => 
+    [joinColumns] => Array
+        (
+            [0] => Array
+                (
+                    [name] => id_noticia
+                    [referencedColumnName] => id
+                    [unique] => 
+                    [nullable] => 1
+                    [onDelete] => 
+                    [onUpdate] => 
+                    [columnDefinition] => 
+                )
+
+        )
+
+    [inverseJoinColumns] => Array
+        (
+            [0] => Array
+                (
+                    [name] => id_tag
+                    [referencedColumnName] => id
+                    [unique] => 
+                    [nullable] => 1
+                    [onDelete] => 
+                    [onUpdate] => 
+                    [columnDefinition] => 
+                )
+
+        )
+
+)
+Array
+(
+    [name] => TagNoticia
+    [schema] => 
+)
+Array
+(
+    [name] => TagNoticia
+    [schema] => 
+    [joinColumns] => Array
+        (
+            [0] => Array
+                (
+                    [name] => id_noticia
+                    [referencedColumnName] => id
+                    [unique] => 
+                    [nullable] => 1
+                    [onDelete] => 
+                    [onUpdate] => 
+                    [columnDefinition] => 
+                )
+
+        )
+
+    [inverseJoinColumns] => Array
+        (
+            [0] => Array
+                (
+                    [name] => id_tag
+                    [referencedColumnName] => id
+                    [unique] => 
+                    [nullable] => 1
+                    [onDelete] => 
+                    [onUpdate] => 
+                    [columnDefinition] => 
+                )
+
+        )
+
+)
+Array
+(
+    [name] => TagNoticia
+    [schema] => 
+)
+Array
+(
+    [name] => TagNoticia
+    [schema] => 
+    [joinColumns] => Array
+        (
+            [0] => Array
+                (
+                    [name] => id_noticia
+                    [referencedColumnName] => id
+                    [unique] => 
+                    [nullable] => 1
+                    [onDelete] => 
+                    [onUpdate] => 
+                    [columnDefinition] => 
+                )
+
+        )
+
+    [inverseJoinColumns] => Array
+        (
+            [0] => Array
+                (
+                    [name] => id_tag
+                    [referencedColumnName] => id
+                    [unique] => 
+                    [nullable] => 1
+                    [onDelete] => 
+                    [onUpdate] => 
+                    [columnDefinition] => 
+                )
+
+        )
+
+)
+Array
+(
+    [name] => TagNoticia
+    [schema] => 
+)
+Array
+(
+    [name] => TagNoticia
+    [schema] => 
+    [joinColumns] => Array
+        (
+            [0] => Array
+                (
+                    [name] => id_noticia
+                    [referencedColumnName] => id
+                    [unique] => 
+                    [nullable] => 1
+                    [onDelete] => 
+                    [onUpdate] => 
+                    [columnDefinition] => 
+                )
+
+        )
+
+    [inverseJoinColumns] => Array
+        (
+            [0] => Array
+                (
+                    [name] => id_tag
+                    [referencedColumnName] => id
+                    [unique] => 
+                    [nullable] => 1
+                    [onDelete] => 
+                    [onUpdate] => 
+                    [columnDefinition] => 
+                )
+
+        )
+
+)
+Array
+(
+    [name] => TagNoticia
+    [schema] => 
+)
+Array
+(
+    [name] => TagNoticia
+    [schema] => 
+    [joinColumns] => Array
+        (
+            [0] => Array
+                (
+                    [name] => id_noticia
+                    [referencedColumnName] => id
+                    [unique] => 
+                    [nullable] => 1
+                    [onDelete] => 
+                    [onUpdate] => 
+                    [columnDefinition] => 
+                )
+
+        )
+
+    [inverseJoinColumns] => Array
+        (
+            [0] => Array
+                (
+                    [name] => id_tag
+                    [referencedColumnName] => id
+                    [unique] => 
+                    [nullable] => 1
+                    [onDelete] => 
+                    [onUpdate] => 
+                    [columnDefinition] => 
+                )
+
+        )
+
+)

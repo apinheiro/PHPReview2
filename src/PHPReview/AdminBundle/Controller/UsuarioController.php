@@ -53,7 +53,7 @@ class UsuarioController extends Controller
     /**
      * @Route("/edit/{id}")
      */
-    public function editAction()
+    public function editAction($id)
     {
         
     }
@@ -62,7 +62,7 @@ class UsuarioController extends Controller
      *
      *@Route("/disable/{id}") 
      */
-    public function desabilitaAction()
+    public function desabilitaAction($id)
     {
         
     }
@@ -70,8 +70,30 @@ class UsuarioController extends Controller
     /**
      * @Route("/remove/{id}")
      */
-    public function removeAction()
+    public function removeAction($id)
     {
+        
+    }
+    /**
+     * @Template
+     * @Route("/remove/atualiza_perfil_usuario.{_format}",requirements={"_format"="json"})
+     * @Method({"POST"})
+     */
+    
+    public function atualizaRegraAction(){
+        try{
+            $request = $this->getRequest();
+
+            $em = $this->getDoctrine->getEntityManager();
+            $usuario = $em->getRepository('WebsiteBundle:Usuario')->find($request->request->get('id'));
+
+            $usuario->setRole($request->request->get('role'));
+            $em->flush();
+            
+            return array('valido'=>'1','mensagem'=>$usuario->getRole());
+        }catch(\Exception $ex){
+            return array('valido'=>'0','mensagem'=> $ex->getMessage());
+        }
         
     }
 }

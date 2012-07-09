@@ -1,5 +1,24 @@
+{% block jquery %}
+$('.perfil a').click(function(){
+  $('.perfil').hide();
+  $('.perfil_edit').show();
+});
+
+$('.perfil_edit a').click(function(){
+  $.post('{{ path('phpreview_admin_usuario_atualizaregra',{'_format':'json'}) }}',
+         {'id': '{{usuario.getId()}}','role':$("nova_regra").val()},
+         function(data){
+            if (data.valido == 1){
+              $('.text_regra').html(data.mensagem);
+              $('.perfil_edit').hide(); $('.perfil').show();
+            }else{
+              alert(data.mensagem);
+            });
+});
+{% endblock %}
+
 <h1>Usuário: {{ usuario.getNmUsuario() }}</h1>
-<p>Usuário cadastrado em {{ usuario.getDtCriacao('d/m/Y H:i') }}<br />
+<p class="informacao_cadastro">Usuário cadastrado em {{ usuario.getDtCriacao('d/m/Y H:i') }}<br />
 Última Atualização {{ usuario.getDtAtualizacao('d/m/Y H:i') }}</p>
 
 <table class="tabela_usuario">
@@ -10,7 +29,16 @@
     </tr>
     <tr>
        <td>Perfil: </td>
-       <td>{{ usuario.getRole() }}</td>
+       <td><div class="perfil"><span class="texto_regra">{{ usuario.getRole() }}</span><a href="#">editar</a></div>
+           <div class="perfil_edit"> 
+              <select id="nova_regra">
+                {% for classe in usuario.getListaRoles() %}
+                  <option value="{{classe.value}}" {% if classe.value == usuario.getRole() %} selected="true" {% endif %}>{{ classe.text }}</option>
+                {% endfor %}
+              </select>
+                <a href="#">ok</a>
+           </div>
+       </td>
     </tr>
     <tr>
        <td>Email: </td>

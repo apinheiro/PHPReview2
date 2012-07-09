@@ -584,4 +584,8 @@ class Usuario extends Gravatar implements UserInterface, \Serializable
         return $this->chaves;
     }
     
+    public function getListaRoles(){
+        $a = array(array('value'=>'ROLE_USER','text'=> 'Assinante'), array('value'=>'ROLE_SUPER_USER', 'text'=>'Usuário membro'), array('value'=> 'ROLE_ADMIN','text'=>'Administrador'), array('value'=>'ROLE_SUPER_ADMIN','text'=> 'Super Administrador'));
+        return $a;
+    }
 }
